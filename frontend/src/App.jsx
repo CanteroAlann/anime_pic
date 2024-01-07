@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import imageService from './services/images'
+import ImageList from './components/ImageList'
 
 
 function App() {
@@ -16,9 +17,7 @@ function App() {
   return (
     <>
       <h1>Anime Art Galery</h1>
-      {images.map(image =>
-        <img key={image.id} src={`src/images/${image.filename}`} width={100} height={100} />
-      )}
+      <ImageList images={images} />
     </>
   )
 
