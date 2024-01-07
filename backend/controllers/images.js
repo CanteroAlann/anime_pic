@@ -6,17 +6,14 @@ const multer = require('multer');
 
 // GET all images
 imageRouter.get('/', async (req, res) => {
-    try {
-        const images = await Image.find();
-        res.json(images);
-    } catch (err) {
-        res.status(500).json({ message: err.message });
-    }
+    const images = await Image.find();
+    res.json(images);
 });
 
+// storage of images in the frontend/src/images folder
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
-        cb(null, 'uploads/')
+        cb(null, '../src/images')
     },
     filename: function (req, file, cb) {
         const uniqueSuffix = Date.now() + file.originalname
