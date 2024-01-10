@@ -35,11 +35,10 @@ test('post a new image works well', async () => {
     fs.exists(filePath)
         .then(exists => {
             if (!exists) {
-                console.log('file not exists')
-            } else {
-                console.log('file exists')
+                return Error('file not found')
             }
         })
+
     await api
         .post('/api/images', newImage)
         .attach('img', filePath, { contentType: 'image/png' })
@@ -48,6 +47,7 @@ test('post a new image works well', async () => {
     const response = await api.get('/api/images')
     const filenames = response.body.map(r => r.filename)
     expect(response.body.length).toBe(helper.initialImages.length + 1)
+    expect(filenames).toContain('image_test.png')
 }
 )
 

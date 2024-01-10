@@ -15,13 +15,14 @@ const storage = multer.diskStorage({
     destination: function (req, file, cb) {
         // if the environment is test, save the image in the tests/images folder
         if (process.env.NODE_ENV === 'test') {
+            console.log('test')
             cb(null, './tests/images')
             return
         }
         cb(null, '../frontend/src/images')
     },
     filename: function (req, file, cb) {
-        const uniqueSuffix = Date.now() + file.originalname
+        const uniqueSuffix = file.originalname
         cb(null, uniqueSuffix)
     }
 })
@@ -33,6 +34,7 @@ const upload = multer({ storage: storage })
 
 // POST one image
 imageRouter.post('/', upload.single('img'), async (req, res) => {
+    console.log(req.file)
     const image = new Image({
         filename: req.file.filename,
         favorite: req.body.favorite,
