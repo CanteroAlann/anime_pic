@@ -8,4 +8,9 @@ const getAll = async () => {
     return res.data;
 }
 
-export default { getAll };
+const create = async (newObject) => {
+    const res = await axios.post(baseUrl, newObject);
+    return res.data;
+}
+
+export default { getAll, create };
