@@ -7,6 +7,7 @@ const logger = require('./utils/logger');
 const config = require('./utils/config');
 const imageRouter = require('./controllers/images');
 const middleware = require('./utils/middleware');
+const usersRouter = require('./controllers/users')
 
 
 mongoose.set('strictQuery', false)
