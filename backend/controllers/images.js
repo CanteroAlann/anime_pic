@@ -13,7 +13,7 @@ imageRouter.get('/', async (req, res) => {
 // storage of images in the frontend/src/images folder
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
-        cb(null, '../src/images')
+        cb(null, '../frontend/src/images')
     },
     filename: function (req, file, cb) {
         const uniqueSuffix = Date.now() + file.originalname
