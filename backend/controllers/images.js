@@ -15,7 +15,6 @@ const storage = multer.diskStorage({
     destination: function (req, file, cb) {
         // if the environment is test, save the image in the tests/images folder
         if (process.env.NODE_ENV === 'test') {
-            console.log('test')
             cb(null, './tests/images')
             return
         }
@@ -34,17 +33,12 @@ const upload = multer({ storage: storage })
 
 // POST one image
 imageRouter.post('/', upload.single('img'), async (req, res) => {
-    console.log(req.file)
     const image = new Image({
         filename: req.file.filename,
         favorite: req.body.favorite,
     });
-    try {
-        const newImage = await image.save();
-        res.status(201).json(newImage);
-    } catch (err) {
-        res.status(400).json({ message: err.message });
-    }
+    const newImage = await image.save();
+    res.status(201).json(newImage)
 });
 
 module.exports = imageRouter;

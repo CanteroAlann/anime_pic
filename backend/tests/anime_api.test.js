@@ -2,7 +2,7 @@ const mongoose = require('mongoose')
 const supertest = require('supertest')
 const app = require('../app')
 const api = supertest(app)
-const helper = require('./image_helper')
+const helper = require('./helper')
 const fs = require('mz/fs');
 
 
