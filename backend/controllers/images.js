@@ -13,6 +13,7 @@ imageRouter.get('/', async (req, res) => {
 // storage of images in the frontend/src/images folder
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
+
         // if the environment is test, save the image in the tests/images folder
         if (process.env.NODE_ENV === 'test') {
             cb(null, './tests/images')
