@@ -6,27 +6,28 @@ const helper = require('./helper')
 const fs = require('mz/fs');
 
 
+describe('when there is initially some images saved', () => {
 
-beforeEach(async () => {
-    await helper.loadImages()
-}
-)
+    beforeEach(async () => {
+        await helper.loadImages()
+    })
 
+    test('all images are returned', async () => {
+        const response = await api.get('/api/images')
+        expect(response.body.length).toBe(helper.initialImages.length)
+    })
 
-test('all images are returned', async () => {
-    const response = await api.get('/api/images')
-    expect(response.body.length).toBe(helper.initialImages.length)
+    test('images are returned as json', async () => {
+        await api
+            .get('/api/images')
+            .expect(200)
+            .expect('Content-Type', /application\/json/)
+    })
+
 })
 
-test('images are returned as json', async () => {
-    await api
-        .get('/api/images')
-        .expect(200)
-        .expect('Content-Type', /application\/json/)
-}
-)
-
 test('post a new image works well', async () => {
+    let token = await helper.createUserAndLogin()
     const newImage = {
         filename: 'image_test.png',
         favorite: false,
@@ -41,6 +42,7 @@ test('post a new image works well', async () => {
 
     await api
         .post('/api/images', newImage)
+        .set('Authorization', `bearer ${token}`)
         .attach('img', filePath, { contentType: 'image/png' })
         .expect(201)
         .expect('Content-Type', /application\/json/)
@@ -50,7 +52,6 @@ test('post a new image works well', async () => {
     expect(filenames).toContain('image_test.png')
 }
 )
-
 
 afterAll(async () => {
     await mongoose.connection.close()

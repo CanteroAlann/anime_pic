@@ -2,6 +2,7 @@ const mongoose = require('mongoose')
 
 
 
+
 // Define the image schema with the following properties: filename, favorite
 // The filename is the name of the file upload and the favorite is false by default
 const imageSchema = new mongoose.Schema({

@@ -4,6 +4,12 @@ const userSchema = new mongoose.Schema({
     username: String,
     name: String,
     passwordHash: String,
+    images: [
+        {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'Image'
+        }
+    ],
 
 })
 

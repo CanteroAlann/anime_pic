@@ -6,6 +6,7 @@ const cors = require('cors')
 const logger = require('./utils/logger');
 const config = require('./utils/config');
 const imageRouter = require('./controllers/images');
+const loginRouter = require('./controllers/login')
 const middleware = require('./utils/middleware');
 const usersRouter = require('./controllers/users')
 
@@ -25,6 +26,7 @@ app.use(middleware.requestLogger)
 app.use(cors())
 app.use('/api/images', imageRouter)
 app.use('/api/users', usersRouter)
+app.use('/api/login', loginRouter)
 
 app.use(middleware.unknownEndpoint)
 app.use(middleware.errorHandler)
