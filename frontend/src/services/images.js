@@ -1,6 +1,15 @@
 import axios from 'axios';
 const baseUrl = 'http://localhost:3003/api/images';
 
+let token = null;
+
+const setToken = newToken => {
+    token = `bearer ${newToken}`;
+}
+const config = {
+    headers: { Authorization: token }
+}
+
 
 // GET all images
 const getAll = async () => {
@@ -9,8 +18,8 @@ const getAll = async () => {
 }
 
 const create = async (newObject) => {
-    const res = await axios.post(baseUrl, newObject);
+    const res = await axios.post(baseUrl, newObject, config);
     return res.data;
 }
 
-export default { getAll, create };
+export default { getAll, create, setToken };
