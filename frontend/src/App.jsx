@@ -1,19 +1,18 @@
 import { useState, useEffect } from 'react'
 import imageService from './services/images'
 import loginService from './services/login'
+import userService from './services/user'
 import ImageList from './components/ImageList'
 import ImageUploader from './components/ImageUploader'
 import Login from './components/Login'
 import Togglable from './components/Togglable'
-import NewUser from './components/NewUser'
+
 
 
 
 function App() {
   const [images, setImages] = useState([])
   const [user, setUser] = useState(null)
-  const [username, setUsername] = useState('')
-  const [password, setPassword] = useState('')
 
   useEffect(() => {
     if (!user) return
@@ -25,39 +24,43 @@ function App() {
 
   const handleLoad = (image) => {
     const formData = new FormData()
-    imageService.setToken(user.token)
     formData.append('img', image)
     imageService.create(formData).then(returnedImage => {
       setImages(images.concat(returnedImage))
     })
   }
 
-  const handleLogin = () => {
+  const handleLogin = (username, password) => {
     loginService.login({ username, password }).then(user => {
+      imageService.setToken(user.token)
       setUser(user)
-      setUsername('')
-      setPassword('')
     })
   }
 
-  const handleNewUser = () => {
-    console.log('new user')
+  const handleNewUser = (username, password) => {
+    userService.create({ username, password })
+
   }
+
 
 
   return (
     <>
       <h1>Anime Art Galery</h1>
       <Login
-        setUsername={setUsername}
-        setPassword={setPassword}
-        handleLogin={handleLogin}
+        handleSubmit={handleLogin}
+        buttonLabel={'Login'}
       />
       <Togglable buttonLabel='Create new user'>
-        <NewUser handleNewUser={handleNewUser} />
+        <Login
+          handleSubmit={handleNewUser}
+          buttonLabel={'Create new user'}
+        />
       </Togglable>
-      {user && <ImageList images={images} />}
-      <ImageUploader handleLoad={handleLoad} />
+      {user === null ? null : <>
+        <ImageList images={images} />
+        <ImageUploader handleLoad={handleLoad} />
+      </>}
     </>
   )
 

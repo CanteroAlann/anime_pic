@@ -1,6 +1,7 @@
 import { useState } from "react";
 
 
+//this component is used to upload an image to the server and then display it on the canvas
 const ImageUploader = ({ handleLoad }) => {
     const [selectedFile, setSelectedFile] = useState(null)
 

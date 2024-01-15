@@ -2,40 +2,42 @@ import { useState } from 'react';
 
 
 
-const Login = ({ setUsername, setPassword, handleLogin }) => {
-    const [usernme, setUsernme] = useState('')
-    const [pass, setPass] = useState('')
+const Login = ({ handleSubmit, buttonLabel }) => {
+    const [username, setUsername] = useState('')
+    const [password, setPassword] = useState('')
 
     const handleClick = async (event) => {
         event.preventDefault()
-        setUsername(usernme)
-        setPassword(pass)
-        handleLogin()
+        const usernameToSend = username
+        const passwordToSend = password
+        handleSubmit(usernameToSend, passwordToSend)
+        setUsername('')
+        setPassword('')
+
     }
 
     return (
         <div>
-            <h2>Login</h2>
             <form onSubmit={handleClick}>
                 <div>
                     username
                     <input
                         type="text"
-                        value={usernme}
+                        value={username}
                         name="Username"
-                        onChange={({ target }) => setUsernme(target.value)}
+                        onChange={({ target }) => setUsername(target.value)}
                     />
                 </div>
                 <div>
                     password
                     <input
                         type="password"
-                        value={pass}
+                        value={password}
                         name="Password"
-                        onChange={({ target }) => setPass(target.value)}
+                        onChange={({ target }) => setPassword(target.value)}
                     />
                 </div>
-                <button type="submit">login</button>
+                <button type="submit">{buttonLabel}</button>
             </form>
         </div>
     )
