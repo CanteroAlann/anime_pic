@@ -1,4 +1,5 @@
 
+//this component is used to display the images in the gallery
 const ImageList = ({ images }) => {
     return (
         images.map(image =>
