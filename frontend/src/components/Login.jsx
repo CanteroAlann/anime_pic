@@ -37,7 +37,7 @@ const Login = ({ handleSubmit, buttonLabel }) => {
                         onChange={({ target }) => setPassword(target.value)}
                     />
                 </div>
-                <button type="submit">{buttonLabel}</button>
+                <button className="rounded-lg bg-red-400 shadow" type="submit">{buttonLabel}</button>
             </form>
         </div>
     )
