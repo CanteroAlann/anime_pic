@@ -46,7 +46,7 @@ function App() {
 
   return (
     <>
-      <h1>Anime Art Galery</h1>
+      <h1 className='text-3xl'>Anime Art Galery</h1>
       <Login
         handleSubmit={handleLogin}
         buttonLabel={'Login'}
