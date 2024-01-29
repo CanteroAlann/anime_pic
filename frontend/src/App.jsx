@@ -6,6 +6,7 @@ import ImageList from './components/ImageList'
 import ImageUploader from './components/ImageUploader'
 import Login from './components/Login'
 import Togglable from './components/Togglable'
+import Navbar from './components/Navbar'
 
 
 
@@ -42,8 +43,14 @@ function App() {
 
   }
 
+  return (
+    <>
+      <Navbar user={user} handleLogout={() => setUser(null)} />
+    </>
+  )
 
 
+  /*
   return (
     <>
       <h1 className='text-3xl'>Anime Art Galery</h1>
@@ -63,6 +70,7 @@ function App() {
       </>}
     </>
   )
+  */
 
 }
 
