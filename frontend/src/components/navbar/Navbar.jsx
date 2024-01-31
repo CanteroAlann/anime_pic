@@ -3,29 +3,29 @@ import {
     Routes, Route, Link
 } from 'react-router-dom'
 
-import Home from './Home'
-import Images from './Images'
-import Profile from './Profile'
-import Login from './Login'
+import Home from '../home/Home'
+import Images from '../Images'
+import Profile from '../Profile'
+import Login from '../Login'
+import './navbar.css'
 
 const Navbar = ({ user, handleLogout }) => {
-    const padding = {
-        paddingRight: 5
-    }
+
 
     const handleLogin = () => {
         console.log('login')
     }
 
     return (
+
         <Router>
-            <div className='flex flex-auto'>
-                <Link style={padding} to='/'>home</Link>
-                <Link style={padding} to='/login'>login</Link>
-                <Link style={padding} to='/images'>images</Link>
-                <Link style={padding} to='/profile'>your profile</Link>
-                <button onClick={handleLogout}>logout</button>
+            <div className='navbar'>
+                <Link to='/'>home</Link>
+                <Link to='/login'>login</Link>
+                <Link to='/images'>images</Link>
+                <Link to='/profile'>profile</Link>
             </div>
+
             <Routes>
                 <Route path='/' element={<Home />} />
                 <Route path='/images' element={<Images />} />

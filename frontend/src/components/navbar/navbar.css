@@ -1,0 +1,27 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+.navbar-position{
+    position: absolute;
+    right: 0;
+    text-align: center;
+    width: 20%;
+}
+
+.flex-option{
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+    justify-content: center;
+
+}
+
+@layer components {
+  .navbar {
+    @apply flex-option navbar-position; ;
+  }
+}
+
+

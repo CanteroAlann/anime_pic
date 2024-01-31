@@ -2,11 +2,7 @@ import { useState, useEffect } from 'react'
 import imageService from './services/images'
 import loginService from './services/login'
 import userService from './services/user'
-import ImageList from './components/ImageList'
-import ImageUploader from './components/ImageUploader'
-import Login from './components/Login'
-import Togglable from './components/Togglable'
-import Navbar from './components/Navbar'
+import Navbar from './components/navbar/Navbar'
 
 
 
