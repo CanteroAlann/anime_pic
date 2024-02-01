@@ -9,7 +9,7 @@ import Profile from '../Profile'
 import Login from '../login/Login'
 import './navbar.css'
 
-const Navbar = ({ user, handleLogin, handleLogout }) => {
+const Navbar = ({ user, handleLogin, handleLogout, images }) => {
 
     const handleClick = () => {
         handleLogout(null)
@@ -30,7 +30,7 @@ const Navbar = ({ user, handleLogin, handleLogout }) => {
             </div>
 
             <Routes>
-                <Route path='/' element={<Home />} />
+                <Route path='/' element={<Home images={images} />} />
                 <Route path='/images' element={<Images />} />
                 <Route path='/login' element={<Login handleSubmit={handleLogin} buttonLabel={"login"} />} />
                 <Route path='/profile' element={<Profile />} />

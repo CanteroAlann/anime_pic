@@ -3,6 +3,7 @@ import imageService from './services/images'
 import loginService from './services/login'
 import userService from './services/user'
 import Navbar from './components/navbar/Navbar'
+import Footer from './components/footer/Footer'
 
 
 
@@ -42,7 +43,8 @@ function App() {
 
   return (
     <>
-      <Navbar user={user} handleLogin={handleLogin} handleLogout={setUser} />
+      <Navbar user={user} handleLogin={handleLogin} handleLogout={setUser} images={images} />
+      <Footer />
     </>
   )
 
