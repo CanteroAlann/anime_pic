@@ -28,6 +28,7 @@ function App() {
   }
 
   const handleLogin = (username, password) => {
+    console.log('logging in with', username, password)
     loginService.login({ username, password }).then(user => {
       imageService.setToken(user.token)
       setUser(user)
@@ -41,7 +42,7 @@ function App() {
 
   return (
     <>
-      <Navbar user={user} handleLogout={() => setUser(null)} />
+      <Navbar user={user} handleLogin={handleLogin} handleLogout={setUser} />
     </>
   )
 

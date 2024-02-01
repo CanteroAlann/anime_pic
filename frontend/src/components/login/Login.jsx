@@ -1,8 +1,11 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import './login.css'
 
 
 
 const Login = ({ handleSubmit, buttonLabel }) => {
+    const navigate = useNavigate()
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
 
@@ -10,14 +13,17 @@ const Login = ({ handleSubmit, buttonLabel }) => {
         event.preventDefault()
         const usernameToSend = username
         const passwordToSend = password
+        console.log('username', usernameToSend)
+        console.log('password', passwordToSend)
         handleSubmit(usernameToSend, passwordToSend)
         setUsername('')
         setPassword('')
+        navigate('/images')
 
     }
 
     return (
-        <div>
+        <div className='login'>
             <form onSubmit={handleClick}>
                 <div>
                     username

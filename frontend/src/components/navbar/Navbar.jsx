@@ -6,24 +6,27 @@ import {
 import Home from '../home/Home'
 import Images from '../Images'
 import Profile from '../Profile'
-import Login from '../Login'
+import Login from '../login/Login'
 import './navbar.css'
 
-const Navbar = ({ user, handleLogout }) => {
+const Navbar = ({ user, handleLogin, handleLogout }) => {
 
-
-    const handleLogin = () => {
-        console.log('login')
+    const handleClick = () => {
+        handleLogout(null)
+        localStorage.clear()
     }
+
+
 
     return (
 
         <Router>
             <div className='navbar'>
                 <Link to='/'>home</Link>
-                <Link to='/login'>login</Link>
+                {user === null ? <Link to='/login'>login</Link> : null}
                 <Link to='/images'>images</Link>
-                <Link to='/profile'>profile</Link>
+                {user === null ? null : <Link to='/profile'>profile</Link>}
+                {user != null ? <button onClick={handleClick}>logout</button> : null}
             </div>
 
             <Routes>
