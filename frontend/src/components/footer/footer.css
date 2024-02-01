@@ -1,0 +1,19 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.footer-position{
+    bottom: 0;
+    position:absolute;
+    width: 100%;
+    right: 0;
+    text-align: right;
+    height: 5rem;
+}
