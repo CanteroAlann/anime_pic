@@ -8,13 +8,16 @@ import Images from '../Images'
 import Profile from '../Profile'
 import Login from '../login/Login'
 import './navbar.css'
+import { useSelector } from 'react-redux'
 
-const Navbar = ({ user, handleLogin, handleLogout, images }) => {
-
+const Navbar = () => {
+    const userObject = useSelector(state => state.user)
     const handleClick = () => {
         handleLogout(null)
         localStorage.clear()
     }
+
+    const user = userObject.user
 
 
 
@@ -30,9 +33,9 @@ const Navbar = ({ user, handleLogin, handleLogout, images }) => {
             </div>
 
             <Routes>
-                <Route path='/' element={<Home images={images} />} />
+                <Route path='/' element={<Home />} />
                 <Route path='/images' element={<Images />} />
-                <Route path='/login' element={<Login handleSubmit={handleLogin} buttonLabel={"login"} />} />
+                <Route path='/login' element={<Login buttonLabel={"login"} />} />
                 <Route path='/profile' element={<Profile />} />
             </Routes>
         </Router>
