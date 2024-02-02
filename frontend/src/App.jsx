@@ -1,16 +1,11 @@
-import { useState, useEffect } from 'react'
-import imageService from './services/images'
-import loginService from './services/login'
-import userService from './services/user'
 import Navbar from './components/navbar/Navbar'
 import Footer from './components/footer/Footer'
-import { useSelector } from 'react-redux'
+
 
 
 
 
 function App() {
-  const user = useSelector(state => state.user)
   //const images = useSelector(state => state.images)
   //const [images, setImages] = useState([])
   // const [user, setUser] = useState(null)

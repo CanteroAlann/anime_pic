@@ -13,6 +13,8 @@ const Login = ({ buttonLabel }) => {
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
 
+    //This function is called when the form is submitted and it's responsability
+    //is to dispatch the loginUser action with the username and password as arguments
     const handleClick = async (event) => {
         event.preventDefault()
         const usernameToSend = username
