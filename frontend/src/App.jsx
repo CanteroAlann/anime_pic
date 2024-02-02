@@ -4,46 +4,51 @@ import loginService from './services/login'
 import userService from './services/user'
 import Navbar from './components/navbar/Navbar'
 import Footer from './components/footer/Footer'
+import { useSelector } from 'react-redux'
 
 
 
 
 function App() {
-  const [images, setImages] = useState([])
-  const [user, setUser] = useState(null)
-
-  useEffect(() => {
-    if (!user) return
-    imageService.getAll().then(initialImages => {
-      setImages(initialImages)
-    })
-  }, [user]
-  )
-
-  const handleLoad = (image) => {
-    const formData = new FormData()
-    formData.append('img', image)
-    imageService.create(formData).then(returnedImage => {
-      setImages(images.concat(returnedImage))
-    })
-  }
-
-  const handleLogin = (username, password) => {
-    console.log('logging in with', username, password)
-    loginService.login({ username, password }).then(user => {
-      imageService.setToken(user.token)
-      setUser(user)
-    })
-  }
-
-  const handleNewUser = (username, password) => {
-    userService.create({ username, password })
-
-  }
+  const user = useSelector(state => state.user)
+  //const images = useSelector(state => state.images)
+  //const [images, setImages] = useState([])
+  // const [user, setUser] = useState(null)
+  /*
+    useEffect(() => {
+      if (!user) return
+      imageService.getAll().then(initialImages => {
+        setImages(initialImages)
+      })
+    }, [user]
+    )
+    
+  
+    const handleLoad = (image) => {
+      const formData = new FormData()
+      formData.append('img', image)
+      imageService.create(formData).then(returnedImage => {
+        setImages(images.concat(returnedImage))
+      })
+    }
+  
+    const handleLogin = (username, password) => {
+      console.log('logging in with', username, password)
+      loginService.login({ username, password }).then(user => {
+        imageService.setToken(user.token)
+        setUser(user)
+      })
+    }
+  
+    const handleNewUser = (username, password) => {
+      userService.create({ username, password })
+  
+    }
+    */
 
   return (
     <>
-      <Navbar user={user} handleLogin={handleLogin} handleLogout={setUser} images={images} />
+      <Navbar />
       <Footer />
     </>
   )
