@@ -5,20 +5,26 @@ import {
 
 import Home from '../home/Home'
 import Images from '../Images'
-import Profile from '../Profile'
+import Profile from '../profile/Profile'
 import Login from '../login/Login'
 import './navbar.css'
 import { useSelector } from 'react-redux'
+import { logoutUser, loadUser } from '../../reducers/userReducer'
+import { useDispatch } from 'react-redux'
+import { useEffect } from 'react'
 
 const Navbar = () => {
+    const dispatch = useDispatch()
     const userObject = useSelector(state => state.user)
     const handleClick = () => {
-        handleLogout(null)
-        localStorage.clear()
+        dispatch(logoutUser())
     }
-
     const user = userObject.user
 
+    useEffect(() => {
+        // When the component is mounted, we want to load the user from the local storage
+        dispatch(loadUser())
+    }, [])
 
 
     return (
@@ -27,7 +33,6 @@ const Navbar = () => {
             <div className='navbar'>
                 <Link to='/'>home</Link>
                 {user === null ? <Link to='/login'>login</Link> : null}
-                <Link to='/images'>images</Link>
                 {user === null ? null : <Link to='/profile'>profile</Link>}
                 {user != null ? <button onClick={handleClick}>logout</button> : null}
             </div>
