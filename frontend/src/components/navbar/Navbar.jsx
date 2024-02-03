@@ -7,18 +7,20 @@ import Home from '../home/Home'
 import Images from '../Images'
 import Profile from '../profile/Profile'
 import Login from '../login/Login'
+import Logout from '../logout/Logout'
 import './navbar.css'
 import { useSelector } from 'react-redux'
-import { logoutUser, loadUser } from '../../reducers/userReducer'
+import { loadUser } from '../../reducers/userReducer'
 import { useDispatch } from 'react-redux'
 import { useEffect } from 'react'
 
+
 const Navbar = () => {
+
     const dispatch = useDispatch()
     const userObject = useSelector(state => state.user)
-    const handleClick = () => {
-        dispatch(logoutUser())
-    }
+
+
     const user = userObject.user
 
     useEffect(() => {
@@ -34,7 +36,7 @@ const Navbar = () => {
                 <Link to='/'>home</Link>
                 {user === null ? <Link to='/login'>login</Link> : null}
                 {user === null ? null : <Link to='/profile'>profile</Link>}
-                {user != null ? <button onClick={handleClick}>logout</button> : null}
+                {user != null ? <Logout /> : null}
             </div>
 
             <Routes>
