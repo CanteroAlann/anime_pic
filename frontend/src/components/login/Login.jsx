@@ -20,7 +20,7 @@ const Login = ({ buttonLabel }) => {
         dispatch(loginUser(usernameToSend, passwordToSend))
         setUsername('')
         setPassword('')
-        navigate('/images')
+        navigate('/profile')
 
     }
 

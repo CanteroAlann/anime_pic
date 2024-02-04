@@ -1,16 +1,21 @@
-import { useState, useEffect } from 'react'
-import imageService from './services/images'
-import loginService from './services/login'
-import userService from './services/user'
+import { useEffect } from 'react'
 import Navbar from './components/navbar/Navbar'
 import Footer from './components/footer/Footer'
-import { useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
+import { loadUser } from './reducers/userReducer'
 
 
 
 
 function App() {
-  const user = useSelector(state => state.user)
+  const dispatch = useDispatch()
+
+  useEffect(() => {
+    // When the component is mounted, we want to load the user from the local storage
+    dispatch(loadUser())
+
+  }, [dispatch])
+
   //const images = useSelector(state => state.images)
   //const [images, setImages] = useState([])
   // const [user, setUser] = useState(null)

@@ -28,5 +28,22 @@ export const loginUser = (username, password) => {
     }
 }
 
+export const logoutUser = () => {
+    return async dispatch => {
+        window.localStorage.removeItem('loggedUser');
+        dispatch(logout());
+    }
+}
+
+export const loadUser = () => {
+    return async dispatch => {
+        const loggedUser = window.localStorage.getItem('loggedUser');
+        if (loggedUser) {
+            const user = JSON.parse(loggedUser);
+            dispatch(login(user));
+        }
+    }
+}
+
 export default userSlice.reducer;
 
