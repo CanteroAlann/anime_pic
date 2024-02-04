@@ -3,6 +3,7 @@ import { logoutUser } from '../../reducers/userReducer'
 import { useNavigate } from 'react-router-dom'
 
 
+
 const Logout = () => {
     const dispatch = useDispatch()
     const navigate = useNavigate()

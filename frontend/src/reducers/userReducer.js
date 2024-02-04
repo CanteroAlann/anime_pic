@@ -1,5 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import loginService from '../services/login';
+import imageService from '../services/images';
 
 
 export const userSlice = createSlice({
@@ -24,6 +25,7 @@ export const loginUser = (username, password) => {
     return async dispatch => {
         const user = await loginService.login({ username, password });
         window.localStorage.setItem('loggedUser', JSON.stringify(user));
+        imageService.setToken(user.token);
         dispatch(login(user));
     }
 }
@@ -40,6 +42,7 @@ export const loadUser = () => {
         const loggedUser = window.localStorage.getItem('loggedUser');
         if (loggedUser) {
             const user = JSON.parse(loggedUser);
+            imageService.setToken(user.token);
             dispatch(login(user));
         }
     }

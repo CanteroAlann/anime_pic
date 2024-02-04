@@ -49,6 +49,7 @@ imageRouter.post('/', upload.single('img'), async (req, res) => {
         return response.status(401).json({ error: 'token invalid' })
     }
     const user = await User.findById(decodedToken.id)
+    console.log("req", req.file);
 
 
     const image = new Image({
