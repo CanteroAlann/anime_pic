@@ -12,18 +12,25 @@ export const imagesSlice = createSlice({
             state.images = action.payload;
 
         },
-
-
+        create: (state, action) => {
+            state.images = state.images.concat(action.payload);
+        }
     },
 });
 
-export const { setImages } = imagesSlice.actions;
+export const { setImages, create } = imagesSlice.actions;
 
 export const getImages = () => {
     return async dispatch => {
         const images = await imageService.getAll();
         dispatch(setImages(images));
 
+    }
+}
+export const uploadImage = (data) => {
+    return async dispatch => {
+        const newImage = await imageService.create(data);
+        dispatch(create(newImage));
     }
 }
 

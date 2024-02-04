@@ -3,6 +3,8 @@ import ImageList from '../imageList/ImageList'
 import { useEffect } from 'react'
 import { useDispatch } from 'react-redux'
 import { getImages } from '../../reducers/imagesReducer'
+import ImageUploader from '../imageUploader/ImageUploader'
+import Togglable from '../Togglable'
 
 
 const Profile = () => {
@@ -19,14 +21,15 @@ const Profile = () => {
             <h1>loading...</h1>
         )
     }
-    const user = userObject.user.username
-    console.log('images', images)
+    const username = userObject.user.username
 
     return (
         <div>
-            <h1>welcome {user} </h1>
+            <h1>welcome {username} </h1>
             <ImageList images={images} />
-
+            <Togglable buttonLabel='add image'>
+                <ImageUploader />
+            </Togglable>
         </div>
 
     )
