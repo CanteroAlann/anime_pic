@@ -10,25 +10,11 @@ import Login from '../login/Login'
 import Logout from '../logout/Logout'
 import './navbar.css'
 import { useSelector } from 'react-redux'
-import { loadUser } from '../../reducers/userReducer'
-import { useDispatch } from 'react-redux'
-import { useEffect } from 'react'
 
 
 const Navbar = () => {
-
-    const dispatch = useDispatch()
     const userObject = useSelector(state => state.user)
-
-
     const user = userObject.user
-
-    useEffect(() => {
-        // When the component is mounted, we want to load the user from the local storage
-        dispatch(loadUser())
-    }, [])
-
-
     return (
 
         <Router>
