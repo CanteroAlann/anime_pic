@@ -4,7 +4,7 @@ import { useEffect } from 'react'
 import { useDispatch } from 'react-redux'
 import { getImages } from '../../reducers/imagesReducer'
 import ImageUploader from '../imageUploader/ImageUploader'
-import Togglable from '../Togglable'
+import Togglable from '../togglable/Togglable'
 
 
 const Profile = () => {

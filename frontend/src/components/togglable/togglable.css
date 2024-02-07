@@ -1,0 +1,22 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+
+
+@layer components {
+    .togglable-container {
+        @apply flex flex-col items-center justify-center
+        w-full h-full
+        bg-white
+        rounded-lg
+        shadow-md
+        border-2 border-solid border-slate-200
+        text-slate-500
+        cursor-pointer
+        hover:border-slate-300
+        p-2
+        gap-2 ;
+    }
+}

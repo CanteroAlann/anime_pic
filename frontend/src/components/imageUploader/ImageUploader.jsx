@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { uploadImage } from "../../reducers/imagesReducer";
+import './imageUploader.css'
 //this component is used to upload an image to the server and then display it on the canvas
 const ImageUploader = () => {
     const dispatch = useDispatch()
@@ -22,10 +23,13 @@ const ImageUploader = () => {
 
 
     return (
-        <form onSubmit={handleSubmit}>
-            <input type="file" onChange={handleFileChange} />
-            <button type="submit">load image</button>
-        </form>
+        <div>
+            <h2>Upload image</h2>
+            <form className="form-uploader" onSubmit={handleSubmit}>
+                <input type="file" className="choose-file-input" onChange={handleFileChange} />
+                <button type="submit">load image</button>
+            </form>
+        </div>
     )
 }
 
