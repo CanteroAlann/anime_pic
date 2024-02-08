@@ -18,16 +18,20 @@
         @apply flex flex-col items-center
         gap-2
     }
+    .drop-area{
+        @apply 
+        bg-white
+        text-slate-500
+        w-full
+        h-full
+        cursor-pointer
+        hover:border-slate-300
+        border-2 border-dashed
+        rounded
+        p-2
+        gap-2 ;
+    }
 
 
-
-
-  .choose-file-input {
-    @apply block w-full text-sm text-slate-500
-    file:mr-4 file:py-2 file:px-4
-    file:rounded-full file:border-0
-    file:text-sm file:font-semibold
-    file:bg-violet-50 file:text-violet-700
-    hover:file:bg-violet-100 ;
-  }
+  
 }

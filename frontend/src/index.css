@@ -13,3 +13,14 @@ body {
     width: 100%;
     box-sizing: border-box;      
 }
+
+#root {
+    display: flex;
+    gap: 5px;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
+    width: 100%;
+    box-sizing: border-box;
+    border: 1px solid black;    
+}

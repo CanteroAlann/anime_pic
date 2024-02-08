@@ -6,30 +6,54 @@ import './imageUploader.css'
 const ImageUploader = () => {
     const dispatch = useDispatch()
     const [selectedFile, setSelectedFile] = useState(null)
+    const [showLoadButton, setShowLoadButton] = useState(false)
+
 
     const handleFileChange = (e) => {
         setSelectedFile(e.target.files[0])
+        console.log("file choosen")
+        setShowLoadButton(true)
 
     }
 
-    const handleSubmit = (e) => {
+    const handleClick = (e) => {
         e.preventDefault()
         const formData = new FormData()
         formData.append('img', selectedFile)
-        console.log('selectedFile', selectedFile)
-        console.log('formData', formData)
         dispatch(uploadImage(formData))
+    }
+
+    const handleDrop = (e) => {
+        e.preventDefault()
+        e.stopPropagation()
+        setSelectedFile(e.dataTransfer.files[0])
+        setShowLoadButton(true)
+
+    }
+
+    const handleDragOver = (e) => {
+        e.preventDefault()
+        e.stopPropagation()
     }
 
 
     return (
-        <div>
-            <h2>Upload image</h2>
-            <form className="form-uploader" onSubmit={handleSubmit}>
-                <input type="file" className="choose-file-input" onChange={handleFileChange} />
-                <button type="submit">load image</button>
-            </form>
-        </div>
+        <>
+            <div className="drop-area"
+                onDrop={handleDrop}
+                onDragOver={handleDragOver}>
+                <p>Drag and drop image here</p>
+                <label htmlFor="file" className="choose-file">or choose file</label>
+            </div>
+            <div>
+                <input type="file" name="file" id="file" className="choose-file-input" hidden onChange={handleFileChange} />
+            </div>
+            <div>
+                {showLoadButton === false ? null
+                    : <button type="submit" onClick={handleClick}>load image</button>}
+            </div>
+        </>
+
     )
 }
 

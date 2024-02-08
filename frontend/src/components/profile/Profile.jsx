@@ -5,6 +5,7 @@ import { useDispatch } from 'react-redux'
 import { getImages } from '../../reducers/imagesReducer'
 import ImageUploader from '../imageUploader/ImageUploader'
 import Togglable from '../togglable/Togglable'
+import './profile.css'
 
 
 const Profile = () => {
@@ -24,7 +25,7 @@ const Profile = () => {
     const username = userObject.user.username
 
     return (
-        <div>
+        <div id='profile'>
             <h1>welcome {username} </h1>
             <ImageList images={images} />
             <Togglable buttonLabel='add image'>
