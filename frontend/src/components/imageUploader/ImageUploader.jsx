@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { uploadImage } from "../../reducers/imagesReducer";
 import './imageUploader.css'
+import { FcAddImage } from "react-icons/fc";
 //this component is used to upload an image to the server and then display it on the canvas
 const ImageUploader = () => {
     const dispatch = useDispatch()
@@ -42,8 +43,9 @@ const ImageUploader = () => {
             <div className="drop-area"
                 onDrop={handleDrop}
                 onDragOver={handleDragOver}>
-                <p>Drag and drop image here</p>
-                <label htmlFor="file" className="choose-file">or choose file</label>
+                <FcAddImage size={50} />
+                <p>Drag and drop image here or</p>
+                <label htmlFor="file" className="label-input">choose a file</label>
             </div>
             <div>
                 <input type="file" name="file" id="file" className="choose-file-input" hidden onChange={handleFileChange} />
