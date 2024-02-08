@@ -52,7 +52,7 @@ const ImageUploader = () => {
             </div>
             <div>
                 {showLoadButton === false ? null
-                    : <button type="submit" onClick={handleClick}>load image</button>}
+                    : <button type="submit" id='load-button' onClick={handleClick}>load</button>}
             </div>
         </>
 

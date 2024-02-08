@@ -19,7 +19,7 @@ const Togglable = (props) => {
             </div>
             <div style={showWhenVisible} id='drag-and-drop-container'>
                 {props.children}
-                <button onClick={toggleVisibility}>cancel</button>
+                <button id='cancel-button' onClick={toggleVisibility}>Cancel</button>
             </div>
         </div>
     )
