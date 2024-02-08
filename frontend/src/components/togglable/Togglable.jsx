@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import './togglable.css'
 
 
 const Togglable = (props) => {
@@ -12,13 +13,13 @@ const Togglable = (props) => {
     }
 
     return (
-        <div>
+        <div className='togglable-container'>
             <div style={hideWhenVisible}>
                 <button onClick={toggleVisibility}>{props.buttonLabel}</button>
             </div>
-            <div style={showWhenVisible} className='togglableContent'>
+            <div style={showWhenVisible} id='drag-and-drop-container'>
                 {props.children}
-                <button onClick={toggleVisibility}>cancel</button>
+                <button id='cancel-button' onClick={toggleVisibility}>Cancel</button>
             </div>
         </div>
     )

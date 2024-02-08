@@ -1,0 +1,33 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+*{
+    box-sizing: border-box;
+}
+
+
+
+@layer components {
+    .togglable-container {
+        @apply flex flex-col items-center justify-center
+        w-full h-full
+        bg-white
+        text-slate-500
+        cursor-pointer
+        hover:border-slate-300
+        p-2
+        gap-2 ;
+    }
+    
+    #drag-and-drop-container{
+        @apply flex  flex-col items-center 
+        w-full h-full
+        gap-2
+        
+
+    }
+    #cancel-button{
+        @apply text-sm font-semibold leading-6 text-gray-900
+    }
+}

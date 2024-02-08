@@ -1,0 +1,10 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+@layer components {
+  #profile {
+    @apply flex flex-col items-center justify-center
+    w-2/4 min-h-80 border-2 border-solid border-slate-200}
+  }
