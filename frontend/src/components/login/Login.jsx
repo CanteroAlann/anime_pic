@@ -21,7 +21,6 @@ const Login = ({ buttonLabel }) => {
         setUsername('')
         setPassword('')
         navigate('/profile')
-
     }
 
     return (
@@ -45,7 +44,11 @@ const Login = ({ buttonLabel }) => {
                         onChange={({ target }) => setPassword(target.value)}
                     />
                 </div>
-                <button className="rounded-lg bg-red-400 shadow" type="submit">{buttonLabel}</button>
+                <button className="rounded-lg bg-red-400 shadow"
+                    id="submit-button"
+                    type="submit">
+                    {buttonLabel}
+                </button>
             </form>
         </div>
     )
