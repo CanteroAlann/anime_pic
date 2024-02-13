@@ -1,12 +1,31 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
 * {
     box-sizing: border-box;
 }
 
 
-.login {
-    margin: 20px auto;
-    width: 300px;
-    padding: 20px;
-    border: 1px solid #ccc;
-    background: #f9f9f9;
+@layer components {
+    .login{
+    @apply flex flex-col items-center gap-2 border-2 border-gray-300 p-4 rounded-md mt-11 min-h-80
+    w-3/4;
+    }
+    #login-form{
+    @apply flex flex-col gap-4 w-1/2 h-5/6;
+    }
+    #username-input, #password-input{
+    @apply border-2 border-[#a8dadc] p-2  shadow-sm rounded-md w-full h-9  focus:bg-[#b1b9e0]
+    hover:bg-[#b1b9e0];
+    }
+    #submit-button{
+    @apply rounded-md bg-[#5e548e] text-[#f1faee] font-bold mt-5 h-10 w-full
+     hover:bg-[#7f74b3] ;
+    }
+
+    #input-container{
+    @apply flex flex-col gap-2;
+    }
 }

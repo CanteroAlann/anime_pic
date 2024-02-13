@@ -25,22 +25,29 @@ const Login = ({ buttonLabel }) => {
 
     return (
         <div className='login'>
-            <form onSubmit={handleClick}>
-                <div>
+            <form onSubmit={handleClick} id='login-form'>
+                <div id='input-container'>
                     username
+                    <br />
                     <input
                         type="text"
                         value={username}
                         name="Username"
+                        id='username-input'
                         onChange={({ target }) => setUsername(target.value)}
                     />
                 </div>
-                <div>
-                    password
+                <div id='input-container'>
+                    <div className='flex  flex-row items-center justify-between'>
+                        <p>password</p>
+                        <p>forget password?</p>
+                    </div>
+
                     <input
                         type="password"
                         value={password}
                         name="Password"
+                        id='password-input'
                         onChange={({ target }) => setPassword(target.value)}
                     />
                 </div>
