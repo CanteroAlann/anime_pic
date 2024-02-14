@@ -23,6 +23,9 @@ const Login = ({ buttonLabel }) => {
         navigate('/profile')
     }
 
+    const handleForgetPassword = () => {
+        console.log('forgot password')
+    }
     return (
         <div className='login'>
             <form onSubmit={handleClick} id='login-form'>
@@ -40,7 +43,7 @@ const Login = ({ buttonLabel }) => {
                 <div id='input-container'>
                     <div className='flex  flex-row items-center justify-between'>
                         <p>password</p>
-                        <p>forget password?</p>
+                        <p id='forget-pass-p' onClick={handleForgetPassword}>forget password?</p>
                     </div>
 
                     <input
@@ -51,12 +54,18 @@ const Login = ({ buttonLabel }) => {
                         onChange={({ target }) => setPassword(target.value)}
                     />
                 </div>
-                <button className="rounded-lg bg-red-400 shadow"
+                <button
                     id="submit-button"
                     type="submit">
                     {buttonLabel}
                 </button>
             </form>
+            <div id='container-to-create-user'>
+                <p>Don't have an account?
+                    <span id='create-user-p' onClick={() => navigate('/signup')}>Create one</span>
+                </p>
+
+            </div>
         </div>
     )
 }

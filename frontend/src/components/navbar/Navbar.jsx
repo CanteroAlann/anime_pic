@@ -8,6 +8,7 @@ import Images from '../Images'
 import Profile from '../profile/Profile'
 import Login from '../login/Login'
 import Logout from '../logout/Logout'
+import CreateUser from '../createUser/CreateUser'
 import './navbar.css'
 import { useSelector } from 'react-redux'
 
@@ -30,6 +31,7 @@ const Navbar = () => {
                 <Route path='/images' element={<Images />} />
                 <Route path='/login' element={<Login buttonLabel={"login"} />} />
                 <Route path='/profile' element={<Profile />} />
+                <Route path='/signup' element={<CreateUser />} />
             </Routes>
         </Router>
     )
